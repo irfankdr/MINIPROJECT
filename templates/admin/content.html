@@ -1,0 +1,131 @@
+{#{% extends 'admin/index.html' %}#}
+{##}
+{#{% block head %}#}
+{#    <!-- Include Bootstrap CSS -->#}
+{#    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">#}
+{#{% endblock %}#}
+{##}
+{#{% block body %}#}
+{#    <div class="row">#}
+{#    <div class="col-sm-6 col-md-3">#}
+{#        <div class="card card-stats card-round">#}
+{#            <div class="card-body">#}
+{#                <div class="row align-items-center">#}
+{#                    <div class="col-icon">#}
+{#                        <div#}
+{#                                class="icon-big text-center icon-primary bubble-shadow-small"#}
+{#                        >#}
+{#                            <i class="fas fa-users"></i>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="col col-stats ms-3 ms-sm-0">#}
+{#                        <h6>Total Feedbacks :</h6>#}
+{#                        {{ request.session.complaint_count }}#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#    <div class="col-sm-6 col-md-3">#}
+{#        <div class="card card-stats card-round">#}
+{#            <div class="card-body">#}
+{#                <div class="row align-items-center">#}
+{#                    <div class="col-icon">#}
+{#                        <div#}
+{#                                class="icon-big text-center icon-info bubble-shadow-small"#}
+{#                        >#}
+{#                            <i class="fas fa-user-check"></i>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="col col-stats ms-3 ms-sm-0">#}
+{#                        <div class="numbers">#}
+{#                            <h6>Total Registered user :</h6>#}
+{#                            {{ request.session.registered_user_count }}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#    <!-- Include Bootstrap JS and dependencies (optional) -->#}
+{#    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>#}
+{#    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>#}
+{#    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>#}
+{#{% endblock %}#}
+{% extends 'admin/index.html' %}
+
+{% block head %}
+    <!-- Include Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <!-- Total Complaints Card -->
+        <div class="col-sm-6 col-md-3">
+            <div class="card card-stats card-round">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-icon">
+                            <div class="icon-big text-center text-primary">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                        <div class="col col-stats ml-3">
+                            <h6>Total Feedbacks:</h6>
+                            <p>{{ request.session.feedback_count }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Registered Users Card -->
+        <div class="col-sm-6 col-md-3">
+            <div class="card card-stats card-round">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-icon">
+                            <div class="icon-big text-center text-info">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                        </div>
+                        <div class="col col-stats ml-3">
+                            <h6>Total Counselor:</h6>
+                            <p>{{ request.session.counsilor_count }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="card card-stats card-round">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-icon">
+                            <div class="icon-big text-center text-info">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                        </div>
+                        <div class="col col-stats ml-3">
+                            <h6>Total staff:</h6>
+                            <p>{{ request.session.staff_count }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</div>
+
+    </div>
+</div>
+<!-- Include Bootstrap JS only if needed -->
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+{% endblock %}

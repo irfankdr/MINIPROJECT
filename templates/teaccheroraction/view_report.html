@@ -1,0 +1,66 @@
+{% extends 'teaccheroraction/action index.html' %}
+{% block body %}
+<head>
+    <meta charset="UTF-8">
+    <title>Action Board</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background */
+        }
+        .container {
+            margin-top: 50px; /* Top spacing */
+        }
+        .card {
+            margin-bottom: 20px; /* Spacing between cards */
+            border: 1px solid #dee2e6; /* Border for the card */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+        }
+        .card-header {
+            background-color: #007bff; /* Bootstrap primary color */
+            color: white; /* White text */
+            font-weight: bold; /* Bold header text */
+            border-top-left-radius: 10px; /* Rounded corners */
+            border-top-right-radius: 10px; /* Rounded corners */
+        }
+        .btn-reply {
+            color: #007bff; /* Link color */
+            text-decoration: none; /* No underline */
+        }
+        .btn-reply:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Action Board</h1>
+        <form id="form1" name="form1" method="post" action="">
+            <div class="row">
+                {% for i in val %}
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            {{ i.COUNSILOR.name }} - {{ i.category }}
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Report:</strong> {{ i.report }}</p>
+                            <p><strong>Date:</strong> {{ i.date }}</p>
+                        </div>
+                        <div class="card-footer text-center">
+                            {% if i.status == 'forwareded to actionboard' %}
+                                <a class="btn-reply" href="/action_board_sendreportreply/{{ i.id }}">Add Reply</a>
+                            {% else %}
+                                <p>{{ i.reply }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </form>
+    </div>
+</body>
+{% endblock %}

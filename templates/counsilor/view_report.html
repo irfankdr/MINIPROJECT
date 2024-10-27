@@ -1,0 +1,76 @@
+{% extends 'counsilor/index.html' %}
+{% block body %}
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            margin: 20px auto;
+            max-width: 1200px; /* Center the container */
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        .card-header {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #4CAF50; /* Color for the header */
+        }
+        .card-body {
+            margin: 10px 0;
+        }
+        .card-footer {
+            text-align: right;
+        }
+        .btn {
+            color: #4CAF50;
+            text-decoration: none;
+            border: 1px solid #4CAF50;
+            border-radius: 4px;
+            padding: 6px 12px;
+            margin-left: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .btn:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Student Reports</h1>
+        <form id="form1" name="form1" method="post" action="">
+            {% csrf_token %}
+            {% for i in val %}
+            <div class="card">
+                <div class="card-header">
+                    {{ i.STUDENT.name }} - {{ i.category }}
+                </div>
+                <div class="card-body">
+                    <p><strong>Report:</strong> {{ i.report }}</p>
+                    <p><strong>Reply:</strong> {{ i.reply }}</p>
+                    <p><strong>Date:</strong> {{ i.date }}</p>
+                </div>
+                <div class="card-footer">
+                    {% if i.status == 'pending' %}
+                        <a class="btn" href="/sendreportreply/{{ i.id }}">Send Reply</a>
+                        <a class="btn" href="/chooseactionboard/{{ i.id }}">Forward</a>
+                    {% else %}
+                        <span>Status: {{ i.status }}</span>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </form>
+    </div>
+</body>
+{% endblock %}

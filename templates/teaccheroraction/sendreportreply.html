@@ -1,0 +1,44 @@
+{% extends 'teaccheroraction/action index.html' %}
+{% block body %}
+<head>
+    <meta charset="UTF-8">
+    <title>Send Report Reply</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background */
+        }
+        .form-container {
+            max-width: 600px; /* Max width for the form */
+            margin: 100px auto; /* Center the form */
+            padding: 30px; /* Padding for the form */
+            background-color: #ffffff; /* White background */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+        }
+        h1 {
+            font-size: 28px; /* Heading size */
+            margin-bottom: 20px; /* Space below the heading */
+            text-align: center; /* Center the heading */
+        }
+        button {
+            width: 100%; /* Full-width button */
+            margin-top: 20px; /* Space above the button */
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <form action="/action_board_sendreportreply_post" method="post">
+            {% csrf_token %}
+            <h1>Send Report Reply</h1>
+            <div class="form-group">
+                <label for="status">Your Reply:</label>
+                <textarea id="status" name="status" class="form-control" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+    </div>
+</body>
+{% endblock %}

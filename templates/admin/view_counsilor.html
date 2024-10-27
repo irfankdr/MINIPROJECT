@@ -1,0 +1,109 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{#{% extends 'admin/index.html' %}#}
+{#{% block body %}#}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="">#}
+{#  <table width="692" border="1">#}
+{##}
+{#    <tr>#}
+{#      <td width="77">Name</td>#}
+{#      <td width="54">Place</td>#}
+{#      <td width="111">Phone</td>#}
+{#      <td width="69">Email</td>#}
+{#        <td width="69">qualification</td>#}
+{#      <td width="141">&nbsp;</td>#}
+{#    </tr>#}
+{#      {% for i in val %}#}
+{#    <tr>#}
+{#     <td>{{ i.name }}</td>#}
+{#      <td>{{ i.place }}</td>#}
+{#      <td>&nbsp;{{ i.phone }}</td>#}
+{#      <td>&nbsp;{{ i.email }}</td>#}
+{#        <td>{{ i.qualification }}</td>#}
+{#     {% if i.LOGIN.type == "blocked" %}#}
+{#        <td><p><a href="/unblock_counsilor/{{ i.LOGIN.id }}">unblock</a></p></td>#}
+{#        {% else %}#}
+{#      <td><p><a href="/block_counsilor/{{ i.LOGIN.id }}">block</a></p>#}
+{#        {% endif %}#}
+{#    </tr>#}
+{#        {% endfor %}#}
+{#    <tr>#}
+{#      <td colspan="7"><a href="addacounsilor">Add new</a></td>#}
+{#    </tr>#}
+{##}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+{% extends 'admin/index.html' %}
+{% block body %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+    /* Custom styles for the table */
+    .custom-table {
+        background-color: darkblue; /* Light background color for the table */
+    }
+    .custom-header {
+        background-color: #007bff; /* Change header color */
+        color: blue; /* Change header text color */
+    }
+    .custom-container {
+        padding-left: 15px;  /* Add left padding */
+        padding-right: 15px; /* Add right padding */
+        padding-top: 30px;   /* Add top padding for spacing */
+    }
+</style>
+
+<div class="container custom-container mt-5">
+    <div class="">
+        <div class="card-header custom-header text-center">
+            <h4>Counselors List</h4>
+        </div>
+        <div class="card-body">
+            <form id="form1" name="form1" method="post" action="">
+                <table class="table table-bordered table-striped custom-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Place</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Qualification</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in val %}
+                        <tr>
+                            <td>{{ i.name }}</td>
+                            <td>{{ i.place }}</td>
+                            <td>{{ i.phone }}</td>
+                            <td>{{ i.email }}</td>
+                            <td>{{ i.qualification }}</td>
+                            {% if i.LOGIN.type == "blocked" %}
+                            <td>
+                                <a class="btn btn-success btn-sm" href="/unblock_counsilor/{{ i.LOGIN.id }}">Unblock</a>
+                            </td>
+                            {% else %}
+                            <td>
+                                <a class="btn btn-danger btn-sm" href="/block_counsilor/{{ i.LOGIN.id }}">Block</a>
+                            </td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="text-center mt-3">
+                    <a class="btn btn-primary" href="addacounsilor">Add New Counselor</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

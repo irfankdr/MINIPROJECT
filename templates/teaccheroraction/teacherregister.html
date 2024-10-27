@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register</title>
+<style>
+    /* General Reset */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Body Styling */
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family: Arial, sans-serif;
+        background: url('../static/login/images/1.png') no-repeat center center; /* Replace with the actual image URL */
+        background-size: cover;
+        background-attachment: fixed;
+        backdrop-filter: brightness(90%);
+    }
+
+    /* Form Container */
+    .form-container {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        max-width: 400px;
+        width: 100%;
+    }
+
+    /* Form Heading */
+    .form-container h2 {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        color: #333;
+    }
+
+    /* Form Table Styling */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table td {
+        padding: 0.75rem 0;
+        color: #333;
+        font-weight: 500;
+    }
+
+    /* Input and Select Styling */
+    input[type="text"],
+    input[type="file"],
+    select {
+        width: 100%;
+        padding: 0.5rem;
+        margin-top: 0.25rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1rem;
+        color: #333;
+    }
+
+    /* Button Styling */
+    .submit-btn {
+        display: block;
+        width: 100%;
+        padding: 0.75rem;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .submit-btn:hover {
+        background-color: #45a049;
+    }
+
+    /* Center Text Alignment */
+    .center-align {
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+<div class="form-container">
+    <h2>Teacher Registration</h2>
+    <form action="/teacherregister_post" method="post" enctype="multipart/form-data" name="form1" id="form1">
+        <table>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" name="textfield" required pattern="[a-zA-Z]+" /></td>
+            </tr>
+            <tr>
+                <td>Place</td>
+                <td><input type="text" name="textfield3" /></td>
+            </tr>
+            <tr>
+                <td>Qualification</td>
+                <td><input type="text" name="textfield2" required pattern="[a-zA-Z]+" /></td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td><input type="text" name="textfield4" required pattern="[6789][0-9]{9}" /></td>
+            </tr>
+            <tr>
+                <td>Standard</td>
+                <td>
+                    <select name="select2">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>Plus One</option>
+                        <option>Plus Two</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="text" name="textfield5" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}" /></td>
+            </tr>
+            <tr>
+                <td>Username</td>
+                <td><input type="text" name="textfield6" required pattern="[a-zA-Z]+" /></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="text" name="textfield7" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" /></td>
+            </tr>
+            <tr>
+                <td>ID Proof</td>
+                <td><input type="file" name="file2" required/></td>
+            </tr>
+            <tr>
+                <td>Image</td>
+                <td><input type="file" name="file" required /></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="center-align">
+                    <input type="submit" class="submit-btn" name="Submit" value="Submit" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

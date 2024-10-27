@@ -1,0 +1,100 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="">#}
+{#  <table width="692" border="1">#}
+{##}
+{#    <tr>#}
+{#      <td width="77">Name</td>#}
+{#      <td width="54">Place</td>#}
+{#      <td width="111">Phone</td>#}
+{#      <td width="69">Email</td>#}
+{#        <td width="69">qualification</td>#}
+{#      <td width="141">&nbsp;REport</td>#}
+{#    </tr>#}
+{#      {% for i in val %}#}
+{#    <tr>#}
+{#     <td>{{ i.name }}</td>#}
+{#      <td>{{ i.place }}</td>#}
+{#      <td>&nbsp;{{ i.phone }}</td>#}
+{#      <td>&nbsp;{{ i.email }}</td>#}
+{#        <td>{{ i.qualification }}</td>#}
+{##}
+{#         <td><a href="sendreport/{{ i.id }}">send report</a></td>#}
+{#    </tr>#}
+{#        {% endfor %}#}
+{##}
+{##}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{% extends 'student/index.html' %}
+{% block body %}
+<style>
+    .info-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    .info-row p {
+        margin: 0;
+        font-weight: normal;
+    }
+    .info-row .value {
+        font-weight: normal;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        {% for i in val %}
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="coursecard-single">
+                <div class="grids5-info position-relative">
+                    <img src="../static/student/assets/images/c1.jpg" alt="" class="img-fluid" />
+                    <div class="meta-list">
+                        <a href="../static/student/courses.html">COUNSELOR </a>
+                    </div>
+                </div>
+                <div class="content-main-top">
+                    <div class="content-top mb-4 mt-3"></div>
+
+                    <div class="info-row">
+                        <p>NAME:</p>
+                        <p class="value">{{ i.name }}</p>
+                    </div>
+                    <div class="info-row">
+                        <p>PLACE:</p>
+                        <p class="value">{{ i.place }}</p>
+                    </div>
+                    <div class="info-row">
+                        <p>PHONE NUMBER:</p>
+                        <p class="value">{{ i.phone }}</p>
+                    </div>
+                    <div class="info-row">
+                        <p>EMAIL ID:</p>
+                        <p class="value">{{ i.email }}</p>
+                    </div>
+                    <div class="info-row">
+                        <p>QUALIFICATION:</p>
+                        <p class="value">{{ i.qualification }}</p>
+                    </div>
+
+                    <div class="top-content-border d-flex align-items-center justify-content-between mt-4 pt-4">
+                        <a class="btn btn-style-primary" href="sendreport/{{ i.id }}">Send report
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

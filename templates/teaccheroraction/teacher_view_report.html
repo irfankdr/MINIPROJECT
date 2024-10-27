@@ -1,0 +1,71 @@
+{% extends 'teaccheroraction/techer index.html' %}
+{% block body %}
+<head>
+    <meta charset="UTF-8">
+    <title>Student Reports</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background */
+        }
+        .container {
+            margin-top: 50px; /* Top margin for spacing */
+        }
+        .card {
+            margin-bottom: 20px; /* Spacing between cards */
+            border: 1px solid #dee2e6; /* Border for the card */
+            border-radius: 10px; /* Rounded corners */
+        }
+        .card-header {
+            font-weight: bold; /* Bold header text */
+            background-color: #007bff; /* Header background color */
+            color: white; /* Header text color */
+            border-top-left-radius: 10px; /* Rounded corners */
+            border-top-right-radius: 10px; /* Rounded corners */
+        }
+        .btn-accept, .btn-reject {
+            margin-right: 10px; /* Spacing between buttons */
+        }
+        .card-footer {
+            display: flex; /* Flexbox for alignment */
+            justify-content: center; /* Center the buttons */
+            align-items: center; /* Center vertically */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Student Reports</h1>
+        <form id="form1" name="form1" method="post" action="">
+            {% csrf_token %}
+            <div class="row">
+                {% for i in val %}
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            {{ i.STUDENT.name }} - {{ i.category }}
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Report:</strong> {{ i.report }}</p>
+                            <p><strong>Reply:</strong> {{ i.reply }}</p>
+                            <p><strong>Date:</strong> {{ i.date }}</p>
+                        </div>
+                        <div class="card-footer text-center">
+                            {% if i.status == "forwareded to staff" %}
+                            <a href="teacher_accept_counsilorreply/{{ i.id }}" class="btn btn-success btn-accept">Accept</a>
+                            <a href="teacher_reject_counsilorreply/{{ i.id }}" class="btn btn-danger btn-reject">Reject</a>
+                            {% elif i.status == "staff verified" %}
+                            <span class="text-success">Replied</span>
+                            {% elif i.status == "staff rejected" %}
+                            <span class="text-danger">Rejected</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </form>
+    </div>
+</body>
+{% endblock %}

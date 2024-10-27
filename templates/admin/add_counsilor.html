@@ -1,0 +1,112 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{#{% extends 'admin/index.html' %}#}
+{#{% block body %}#}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="addcounsilor_post">#}
+{#  <table width="296" border="1">#}
+{#    <tr>#}
+{#      <td width="163">name</td>#}
+{#      <td width="117"><label>#}
+{#        <input type="text" name="textfield" />#}
+{#      </label></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>place</td>#}
+{#      <td><input type="text" name="textfield2" /></td>#}
+{#    </tr>#}
+{##}
+{##}
+{#    <tr>#}
+{#      <td>phone</td>#}
+{#      <td><input type="text" name="textfield5" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>email</td>#}
+{#      <td><input type="text" name="textfield6" /></td>#}
+{#    </tr>#}
+{#       <tr>#}
+{#      <td>qualification</td>#}
+{#      <td><input type="text" name="textfield4" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>username</td>#}
+{#      <td><input type="text" name="textfield7" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>password</td>#}
+{#      <td><input type="text" name="textfield8" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td colspan="2"><label>#}
+{#        <div align="center">#}
+{#          <input type="submit" name="Submit" value="Submit" />#}
+{#          </div>#}
+{#      </label></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+{% extends 'admin/index.html' %}
+{% block body %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+    /* Custom styles for the form */
+    .custom-container {
+        padding-left: 30px;
+        padding-right: 30px;/* Add padding around the container */
+    }
+    .custom-card {
+        background-color: #f8f9fa; /* Light background color for the card */
+    }
+</style>
+
+<div class="container custom-container mt-5">
+    <div class="card custom-card">
+        <div class="card-header bg-primary text-white text-center">
+            <h4>Add Councilor</h4>
+        </div>
+        <div class="card-body">
+            <form id="form1" name="form1" method="post" action="addcounsilor_post">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" name="textfield" id="name" required />
+                </div>
+                <div class="mb-3">
+                    <label for="place" class="form-label">Place</label>
+                    <input type="text" class="form-control" name="textfield2" id="place" required />
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input type="text" class="form-control" name="textfield5" id="phone" required />
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" name="textfield6" id="email" required />
+                </div>
+                <div class="mb-3">
+                    <label for="qualification" class="form-label">Qualification</label>
+                    <input type="text" class="form-control" name="textfield4" id="qualification" required />
+                </div>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" name="textfield7" id="username" required />
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="textfield8" id="password" required />
+                </div>
+                <div class="text-center">
+                    <button type="submit" name="Submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends 'student/index.html' %}
+{% block body %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Action Board</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background */
+        }
+        .container {
+            margin-top: 50px; /* Spacing from the top */
+        }
+        .card {
+            margin-bottom: 20px; /* Spacing between cards */
+        }
+        .card-header {
+            font-weight: bold; /* Bold header text */
+        }
+        .status-pending {
+            background-color: #ffc107; /* Yellow for pending */
+        }
+        .status-forwarded {
+            background-color: #17a2b8; /* Teal for forwarded */
+            color: white;
+        }
+        .status-verified {
+            background-color: #28a745; /* Green for verified */
+            color: white;
+        }
+        .status-rejected {
+            background-color: #dc3545; /* Red for rejected */
+            color: white;
+        }
+        .status-checking {
+            background-color: #6c757d; /* Gray for checking */
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Action Board</h1>
+        <form id="form1" name="form1" method="post" action="">
+            <div class="row">
+                {% for i in val %}
+                <div class="col-md-4">
+                    <div class="card
+                        {% if i.status == 'pending' %}status-pending{% endif %}
+                        {% if i.status == 'forwareded to staff' %}status-forwarded{% endif %}
+                        {% if i.status == 'staff verified' %}status-verified{% endif %}
+                        {% if i.status == 'forwareded to actionboard' %}status-forwarded{% endif %}
+                        {% if i.status == 'staff rejected' %}status-rejected{% endif %}
+                        {% if i.status == 'checking' %}status-checking{% endif %}
+                    ">
+                        <div class="card-header">{{ i.COUNSILOR.name }}</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Category: {{ i.category }}</h5>
+                            <p class="card-text">Report: {{ i.report }}</p>
+                            <p class="card-text">Date: {{ i.date }}</p>
+                            <p class="card-text">Reply: {{ i.reply }}</p>
+                            <p class="card-text">
+                                Status:
+                                {% if i.status == 'pending' %}
+                                    Pending
+                                {% elif i.status == 'forwareded to staff' %}
+                                    On processing, forwarded to staff
+                                {% elif i.status == 'staff verified' %}
+                                    Verified&nbsp;
+{#                                    {{ i.reply }}#}
+                                {% elif i.status == 'forwareded to actionboard' %}
+                                    On processing, forwarded to Action Board
+                                {% elif i.status == 'staff rejected' %}
+                                    Not enabled
+                                {% else %}
+                                    Checking
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </form>
+    </div>
+</body>
+
+{% endblock %}

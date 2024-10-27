@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('../static/login/images/1.png'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        form {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 300px;
+        }
+        table {
+            width: 100%;
+        }
+        input[type="text"],
+        input[type="file"] {
+            width: calc(100% - 10px);
+            padding: 5px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+        label {
+            display: block;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/actionboardregister_post" method="post" enctype="multipart/form-data" name="form1" id="form1">
+        <h2 style="text-align: center;">ActionBoard Register</h2>
+        <table border="0">
+            <tr>
+                <td>Name</td>
+                <td><input type="text" name="textfield" required /></td>
+            </tr>
+            <tr>
+                <td>Place</td>
+                <td><input type="text" name="textfield3" /></td>
+            </tr>
+            <tr>
+                <td>Qualification</td>
+                <td><input type="text" name="textfield2" required /></td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td><input type="text" name="textfield4" required pattern="[6789][0-9]{9}" /></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="text" name="textfield5" required /></td>
+            </tr>
+            <tr>
+                <td>Username</td>
+                <td><input type="text" name="textfield6" required pattern="[a-zA-Z]+" /></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="text" name="textfield7" required /></td>
+            </tr>
+            <tr>
+                <td>ID Proof</td>
+                <td><input type="file" name="file2" /></td>
+            </tr>
+            <tr>
+                <td>Image</td>
+                <td><input type="file" name="file" required="required" /></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div align="center">
+                        <input type="submit" name="Submit" value="Submit" />
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

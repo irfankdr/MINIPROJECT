@@ -1,0 +1,101 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{#{% extends 'admin/index.html' %}#}
+{#{% block body %}#}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="">#}
+{#  <table width="478" border="1">#}
+{#    <tr>#}
+{#      <td width="42">name</td>#}
+{#      <td width="42">place</td>#}
+{#      <td width="48">phone</td>#}
+{#      <td width="41">email</td>#}
+{##}
+{#      <td width="46">image</td>#}
+{#      <td width="57">&nbsp;</td>#}
+{#    </tr>#}
+{#      {% for i in val %}#}
+{#    <tr>#}
+{##}
+{##}
+{#      <td>&nbsp;{{ i.name }}</td>#}
+{#      <td>&nbsp;{{ i.place }}</td>#}
+{#      <td>&nbsp;{{ i.phone }}</td>#}
+{#      <td>&nbsp;{{ i.email }}</td>#}
+{##}
+{#      <td><img src="{{ i.image.url }}" height="100" width="100" ></td>#}
+{##}
+{#        {% if i.LOGIN.type == "blocked" %}#}
+{#        <td><p><a href="/unblock_user/{{ i.LOGIN.id }}">unblock</a></p></td>#}
+{#        {% else %}#}
+{#      <td><p><a href="/block_user/{{ i.LOGIN.id }}">block</a></p>#}
+{#        {% endif %}#}
+{#    </tr>#}
+{#      {% endfor %}#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+{% extends 'admin/index.html' %}
+{% block body %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+    /* Custom styles for the table */
+    .custom-container {
+        padding: 30px; /* Add padding around the container */
+    }
+    .custom-card {
+        background-color: #f8f9fa; /* Light background color for the card */
+    }
+    .image-cell img {
+        border-radius: 10px; /* Round the image corners */
+    }
+</style>
+
+<div class="container custom-container mt-5">
+    <div class="card custom-card">
+        <div class="card-header bg-primary text-white text-center">
+            <h4>Student List</h4>
+        </div>
+        <div class="card-body">
+            <form id="form1" name="form1" method="post" action="">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Place</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Image</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in val %}
+                        <tr>
+                            <td>{{ i.name }}</td>
+                            <td>{{ i.place }}</td>
+                            <td>{{ i.phone }}</td>
+                            <td>{{ i.email }}</td>
+                            <td class="image-cell"><img src="{{ i.image.url }}" height="100" width="100" alt="User Image"></td>
+                            <td>
+                                {% if i.LOGIN.type == "blocked" %}
+                                <a class="btn btn-success btn-sm" href="/unblock_user/{{ i.LOGIN.id }}">Unblock</a>
+                                {% else %}
+                                <a class="btn btn-danger btn-sm" href="/block_user/{{ i.LOGIN.id }}">Block</a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

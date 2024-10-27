@@ -1,0 +1,159 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{#{% extends 'admin/index.html' %}#}
+{#{% block body %}#}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="">#}
+{#  <table width="530" border="1">#}
+{#    <tr>#}
+{#      <td width="42">name</td>#}
+{#      <td width="42">place</td>#}
+{#      <td width="48">qualification</td>#}
+{#      <td width="41">phone</td>#}
+{#      <td width="74">email</td>#}
+{#      <td width="76">idproof</td>#}
+{#      <td width="46">image</td>#}
+{#      <td width="46">type</td>#}
+{##}
+{#    </tr>#}
+{#      {% for i in val %}#}
+{#    <tr>#}
+{#      <td >{{ i.name }}&nbsp;</td>#}
+{#      <td>&nbsp;{{ i.place }}</td>#}
+{#      <td>{{ i.qualification }}</td>#}
+{#      <td>{{ i.phone }}</td>#}
+{#      <td>{{ i.email }}</td>#}
+{#      <td><img src="{{ i.idproof.url }}" height="100"></td>#}
+{#      <td><img src="{{ i.image.url }}" height="100"></td>#}
+{#        {% if i.LOGIN.type == "blocked" %}#}
+{#        <td><p><a href="/unblock_teacher/{{ i.LOGIN.id }}">unblock</a></p></td>#}
+{#        {% else %}#}
+{#      <td><p><a href="/block_teacher/{{ i.LOGIN.id }}">block</a></p>#}
+{#        {% endif %}#}
+{##}
+{#    </tr>#}
+{#      {% endfor %}#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+{% extends 'admin/index.html' %}
+{% block body %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+    /* Custom styles for the table */
+    .custom-container {
+        padding: 30px; /* Add padding around the container */
+    }
+    .custom-card {
+        background-color: #f8f9fa; /* Light background color for the card */
+    }
+    .image-cell img {
+        border-radius: 10px; /* Round the image corners */
+        height: 100px; /* Set image height */
+    }
+</style>
+
+<div class="container custom-container mt-5">
+    <div class="card custom-card">
+     
+        <div class="card-body">
+            <form id="form1" name="form1" method="post" action="/viewteachersearch">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <td colspan="8">type:
+                        <select name="type">
+                            <option value="teacher" {%if type == "teacher"%} selected{% endif%}>teacher</option>
+                            <option value="action board" {%if type == "action board"%} selected{% endif%}>action board</option>
+                        </select>
+                        <input type="submit" name="submit" value="search"> </td>
+                    </tr>
+                    {% if type == 'teacher' %}
+                    <tr><td colspan="10">
+                        <div class="card-header bg-primary text-white text-center">
+                            <h4>Teachers List</h4>
+                        </div>
+                    </td></tr>
+                        <tr>
+                            <th>Name</th>
+                            
+                            <th>Qualification</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>class</th>
+                            <th>ID Proof</th>
+                            <th>Image</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in val %}
+                        <tr>
+                            <td>{{ i.name }}</td>
+                            
+                            <td>{{ i.qualification }}</td>
+                            <td>{{ i.phone }}</td>
+                            <td>{{ i.email }}</td>
+                            <td>{{ i.standered }}</td>
+                            <td class="image-cell"><img src="{{ i.idproof.url }}" alt="ID Proof"></td>
+                            <td class="image-cell"><img src="{{ i.image.url }}" alt="Teacher Image"></td>
+                            <td>
+                                {% if i.LOGIN.type == "blocked" %}
+                                <a class="btn btn-success btn-sm" href="/unblock_teacher/{{ i.LOGIN.id }}">Unblock</a>
+                                {% else %}
+                                <a class="btn btn-danger btn-sm" href="/block_teacher/{{ i.LOGIN.id }}">Block</a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                    <tr><td colspan="10">
+                        <div class="card-header bg-primary text-white text-center">
+                            <h4>Action Board List</h4>
+                        </div>
+                    </td></tr>
+                          <tr>
+                            <th>Name</th>
+                            <th>Place</th>
+                            <th>Qualification</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>ID Proof</th>
+                            <th>Image</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in val %}
+                        <tr>
+                            <td>{{ i.name }}</td>
+                            <td>{{ i.place }}</td>
+                            <td>{{ i.qualification }}</td>
+                            <td>{{ i.phone }}</td>
+                            <td>{{ i.email }}</td>
+                            <td class="image-cell"><img src="{{ i.idproof.url }}" alt="ID Proof"></td>
+                            <td class="image-cell"><img src="{{ i.image.url }}" alt="Teacher Image"></td>
+                            <td>
+                                {% if i.LOGIN.type == "blocked" %}
+                                <a class="btn btn-success btn-sm" href="/unblock_ac/{{ i.LOGIN.id }}">Unblock</a>
+                                {% else %}
+                                <a class="btn btn-danger btn-sm" href="/block_teacher/{{ i.LOGIN.id }}">Block</a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    {% endif %}
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

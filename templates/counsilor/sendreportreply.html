@@ -1,0 +1,42 @@
+{% extends 'counsilor/index.html' %}
+{% block body %}
+<head>
+    <meta charset="UTF-8">
+    <title>Send Feedback</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background */
+        }
+        .form-container {
+            max-width: 600px; /* Set a max width */
+            margin: 50px auto; /* Center the container */
+            padding: 20px; /* Padding for the container */
+            background-color: #ffffff; /* White background for the form */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
+        }
+        h1 {
+            font-size: 28px; /* Increase heading size */
+            margin-bottom: 20px; /* Space below the heading */
+        }
+        button {
+            width: 100%; /* Full-width button */
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <form action="/sendreportreply_post" method="post">
+            {% csrf_token %}
+            <h1>Send Report Reply</h1>
+            <div class="form-group">
+                <label for="status">Your Reply:</label>
+                <textarea id="status" name="status" class="form-control" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+    </div>
+</body>
+{% endblock %}
