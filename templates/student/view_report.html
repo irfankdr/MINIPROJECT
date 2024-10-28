@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Action Board</title>
+    <title>Report Status</title>
     <!-- Include Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -42,7 +42,7 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="text-center mb-4">Action Board</h1>
+        <h1 class="text-center mb-4">Report Status</h1>
         <form id="form1" name="form1" method="post" action="">
             <div class="row">
                 {% for i in val %}
@@ -71,7 +71,7 @@
                                     Verified&nbsp;
 {#                                    {{ i.reply }}#}
                                 {% elif i.status == 'forwareded to actionboard' %}
-                                    On processing, forwarded to Action Board
+                                    On processing, forwarded to Report Status
                                 {% elif i.status == 'staff rejected' %}
                                     Not enabled
                                 {% else %}
